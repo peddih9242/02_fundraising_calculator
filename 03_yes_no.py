@@ -1,5 +1,5 @@
 def string_checker(question, error, valid_list):
-    
+
     # start loop
     valid = False
     while not valid:
@@ -19,5 +19,6 @@ def string_checker(question, error, valid_list):
 
 yes_no = ["yes", "no"]
 
-string_test = string_checker("Yes or no? ", "Please enter yes / no.", yes_no)
-print("You chose", string_test)
+for item in range(0,3):
+    string_test = string_checker("Yes or no? ", "Please enter yes / no.", yes_no)
+    print("You chose", string_test)
