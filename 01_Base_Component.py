@@ -107,30 +107,45 @@ def not_blank(question, error):
 def currency(x):
     return "${:.2f}".format(x)
 
+# function for printing variable / fixed frame and subtotal
+def cost_printing(heading, frame, subtotal):
+    print()
+    print("*** {} Costs ***".format(heading))
+    print(frame)
+    print()
+    print("{} Costs: ${:.2f}".format(heading, subtotal))
+    return ""
+
 # main routine
+
+yes_no = ["yes", "no"]
 
 # get product name
 product_name = not_blank("Product name: ", "Please enter your product name!")
+print()
 
 # get variable costs
-print("*** Variable Costs ***")
+print("**** Variable Costs ****")
 variable_costs = get_costs("variable")
 variable_frame = variable_costs[0]
 variable_sub = variable_costs[1]
 print()
 
-# get fixed costs
-print("*** Fixed Costs ***")
-fixed_costs = get_costs("fixed")
-fixed_frame = fixed_costs[0]
-fixed_sub = fixed_costs[1]
+have_fixed = string_checker("Do you have fixed costs? ", "Please enter yes / no.", yes_no)
 
+if have_fixed == "yes":
+    # get fixed costs
+    print("**** Fixed Costs ****")
+    fixed_costs = get_costs("fixed")
+    fixed_frame = fixed_costs[0]
+    fixed_sub = fixed_costs[1]
+else:
+    fixed_sub = 0
 
 print()
-print(variable_frame)
+print("**** Fund Raising - {} ****".format(product_name))
 print()
-print("Variable Costs: ${:.2f}".format(variable_sub))
-print()
-print(fixed_frame)
-print()
-print("Fixed Costs: ${:.2f}".format(fixed_sub))
+cost_printing("Variable", variable_frame, variable_sub)
+
+if have_fixed == "yes":
+    cost_printing("Fixed", fixed_frame, fixed_sub)
