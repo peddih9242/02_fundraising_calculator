@@ -68,7 +68,7 @@ def get_costs(var_fixed):
 
         var_name.append(what_component)
 
-        component_cost = num_check("Cost of component? ", "Please enter a number above 0.", float)
+        component_cost = num_check("Cost of component? $", "Please enter a number above 0.", float)
         var_price.append(component_cost)
         if var_fixed == "variable":
             component_amount = num_check("Amount of component? ", "Please enter an integer above 0.", int)
@@ -134,6 +134,7 @@ print()
 have_fixed = string_checker("Do you have fixed costs? ", "Please enter yes / no.", yes_no)
 
 if have_fixed == "yes":
+    print()
     # get fixed costs
     print("**** Fixed Costs ****")
     fixed_costs = get_costs("fixed")
@@ -149,3 +150,5 @@ cost_printing("Variable", variable_frame, variable_sub)
 
 if have_fixed == "yes":
     cost_printing("Fixed", fixed_frame, fixed_sub)
+
+print("Total Costs: ${:.2f}".format(variable_sub + fixed_sub))
