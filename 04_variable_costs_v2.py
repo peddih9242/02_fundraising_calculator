@@ -28,9 +28,11 @@ def not_blank(question, error):
         else:
             return response
 
+# currency formatting function
 def currency(x):
     return "${:.2f}".format(x)
 
+# function to get components, costs and set up printing
 def get_costs(var_fixed):
     
     # set up lists and dictionary
@@ -45,7 +47,6 @@ def get_costs(var_fixed):
     }
 
     # get user data and add to list
-    product_name = not_blank("Product name: ", "Please enter your product name!")
 
     what_component = ""
     while what_component.lower() != "xxx":
@@ -61,7 +62,9 @@ def get_costs(var_fixed):
         var_price.append(component_cost)
         if var_fixed == "var":
             component_amount = num_check("Amount of component? ", "Please enter an integer above 0.", int)
-            var_amount.append(component_amount)
+        else:
+            component_amount = 1    
+        var_amount.append(component_amount)
         print()
 
     # set up printing
@@ -85,26 +88,11 @@ def get_costs(var_fixed):
 # get user data and add to list
 product_name = not_blank("Product name: ", "Please enter your product name!")
 
-what_component = ""
-while what_component.lower() != "xxx":
-
-    what_component = not_blank("What component? ", "Please enter your components!")
-
-    if what_component.lower() == "xxx":
-        break
-
-    var_name.append(what_component)
-
-    component_cost = num_check("Cost of component? ", "Please enter a number above 0.", float)
-    var_price.append(component_cost)
-
-    component_amount = num_check("Amount of component? ", "Please enter an integer above 0.", int)
-    var_amount.append(component_amount)
-    print()
-
-
+variable_costs = get_costs("variable")
+variable_frame = variable_costs[0]
+variable_sub = variable_costs[1]
 
 print()
-print(component_frame)
+print(variable_frame)
 print()
-print("Variable Costs: ${:.2f}".format(component_sub))
+print("Variable Costs: ${:.2f}".format(variable_sub))
