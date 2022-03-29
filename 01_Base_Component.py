@@ -151,4 +151,5 @@ cost_printing("Variable", variable_frame, variable_sub)
 if have_fixed == "yes":
     cost_printing("Fixed", fixed_frame, fixed_sub)
 
+print()
 print("Total Costs: ${:.2f}".format(variable_sub + fixed_sub))
