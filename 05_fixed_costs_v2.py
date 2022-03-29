@@ -92,6 +92,6 @@ fixed_frame = fixed_costs[0]
 fixed_sub = fixed_costs[1]
 
 print()
-print(fixed_frame["Cost"])
+print(fixed_frame["Price"])
 print()
 print("Variable Costs: ${:.2f}".format(fixed_sub))

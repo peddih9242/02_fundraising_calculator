@@ -46,6 +46,7 @@ def string_checker(question, error, valid_list):
 def get_costs(var_fixed):
 
     # set up lists and dictionary
+    count = 0
     var_name = []
     var_amount = []
     var_price = []
@@ -58,13 +59,17 @@ def get_costs(var_fixed):
 
     # get user data and add to list
 
-    what_component = ""
-    while what_component.lower() != "xxx":
+    loop_cost = ""
+    while loop_cost == "":
 
         what_component = not_blank("What component? ", "Please enter your components!")
 
         if what_component.lower() == "xxx":
-            break
+            if count == 0:
+                print("Please enter a component first!")
+                continue
+            else:
+                break
 
         var_name.append(what_component)
 
@@ -74,6 +79,7 @@ def get_costs(var_fixed):
             component_amount = num_check("Amount of component? ", "Please enter an integer above 0.", int)
         else:
             component_amount = 1    
+        count += 1
         var_amount.append(component_amount)
         print()
 
@@ -149,7 +155,7 @@ print()
 cost_printing("Variable", variable_frame, variable_sub)
 
 if have_fixed == "yes":
-    cost_printing("Fixed", fixed_frame, fixed_sub)
+    cost_printing("Fixed", fixed_frame[["Total"]], fixed_sub)
 
 print()
 print("Total Costs: ${:.2f}".format(variable_sub + fixed_sub))
