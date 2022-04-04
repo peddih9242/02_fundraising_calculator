@@ -62,3 +62,4 @@ for item in range(6):
     # print results
     print("Profit Target: ${:.2f}".format(goal))
     print("Total Sales: ${:.2f}".format(goal + total_costs))
+    print()
