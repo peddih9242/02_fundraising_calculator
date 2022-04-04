@@ -159,14 +159,14 @@ def get_goal(total_costs):
 
         # if only given a number, ask what they meant based on number
         if profit <= 100 and profit_type == "unknown":
-            check_type = input("Did you mean {}%? ".format(profit))
+            check_type = string_checker("Did you mean {}%? ".format(profit), "Please enter yes or no.", yes_no)
             if check_type == "yes":
                 profit_type = "%"
             else:
                 profit_type = "$"
 
         elif profit > 100 and profit_type == "unknown":
-            check_type = input("Did you mean ${}? ".format(profit))
+            check_type = input("Did you mean ${}? ".format(profit), "Please enter yes or no.", yes_no)
             if check_type == "yes":
                 profit_type = "$"
             else:
@@ -206,6 +206,10 @@ if have_fixed == "yes":
 else:
     fixed_sub = 0
 
+total_costs = variable_sub + fixed_sub
+
+profit_goal = get_goal(total_costs)
+
 print()
 print("**** Fund Raising - {} ****".format(product_name))
 print()
@@ -215,4 +219,8 @@ if have_fixed == "yes":
     cost_printing("Fixed", fixed_frame[["Total"]], fixed_sub)
 
 print()
-print("Total Costs: ${:.2f}".format(variable_sub + fixed_sub))
+print("Total Costs: ${:.2f}".format(total_costs))
+print()
+
+print("Profit Target: ${:.2f}".format(profit_goal))
+print("Total Sales: ${:.2f}".format(profit_goal + total_costs))
