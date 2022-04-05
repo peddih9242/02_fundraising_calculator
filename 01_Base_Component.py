@@ -122,6 +122,7 @@ def cost_printing(heading, frame, subtotal):
     print("{} Costs: ${:.2f}".format(heading, subtotal))
     return ""
 
+# get the profit goal
 def get_goal(total_costs):
     
     error = "Please enter a dollar amount or percentage."
