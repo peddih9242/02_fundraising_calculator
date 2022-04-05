@@ -1,4 +1,5 @@
 import pandas
+import math
 
 # Functions
 
@@ -179,6 +180,10 @@ def get_goal(total_costs):
             return target
         else:
             return profit
+
+# rounding function
+def round_up(amount, round_to):
+    return int(math.ceil(amount / round_to)) * round_to
 
 # main routine
 
