@@ -168,7 +168,7 @@ def get_goal(total_costs):
                 profit_type = "$"
 
         elif profit > 100 and profit_type == "unknown":
-            check_type = input("Did you mean ${}? ".format(profit), "Please enter yes or no.", yes_no)
+            check_type = string_checker("Did you mean ${}? ".format(profit), "Please enter yes or no.", yes_no)
             if check_type == "yes":
                 profit_type = "$"
             else:
@@ -191,6 +191,8 @@ yes_no = ["yes", "no"]
 
 # get product name
 product_name = not_blank("Product name: ", "Please enter your product name!")
+how_many = num_check("How many items will you be producing? ", "Please enter an integer above 0.", int)
+
 print()
 
 # get variable costs
@@ -212,9 +214,17 @@ if have_fixed == "yes":
 else:
     fixed_sub = 0
 
+# get recommended price
 total_costs = variable_sub + fixed_sub
 
 profit_goal = get_goal(total_costs)
+
+sales_needed = total_costs + profit_goal
+
+round_to = num_check("Round to nearest? ", "Please enter an integer above 0.", int)
+
+selling_price = sales_needed / how_many
+recommended_price = round_up(selling_price, round_to)
 
 print()
 print("**** Fund Raising - {} ****".format(product_name))
@@ -230,3 +240,9 @@ print()
 
 print("Profit Target: ${:.2f}".format(profit_goal))
 print("Total Sales: ${:.2f}".format(profit_goal + total_costs))
+
+print()
+
+print("**** Pricing ****")
+print("Minimum Price: ${:.2f}".format(selling_price))
+print("Recommended Price: ${:.2f}".format(recommended_price))
