@@ -246,3 +246,15 @@ print()
 print("**** Pricing ****")
 print("Minimum Price: ${:.2f}".format(selling_price))
 print("Recommended Price: ${:.2f}".format(recommended_price))
+
+# change dataframe to string (so that it can be written into a txt file)
+variable_txt = pandas.DataFrame.to_string(variable_frame)
+
+# write to file
+# create file to hold data (add .txt extension)
+file_name = "{}.txt".format(product_name)
+text_file = open(file_name, "w+")
+
+# heading
+text_file.write("**** Fund Raising - {} ****".format(product_name))
+text_file.write(variable_txt)
