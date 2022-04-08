@@ -239,7 +239,7 @@ print("Total Costs: ${:.2f}".format(total_costs))
 print()
 
 print("Profit Target: ${:.2f}".format(profit_goal))
-print("Total Sales: ${:.2f}".format(profit_goal + total_costs))
+print("Total Sales: ${:.2f}".format(sales_needed))
 
 print()
 
@@ -249,6 +249,8 @@ print("Recommended Price: ${:.2f}".format(recommended_price))
 
 # change dataframe to string (so that it can be written into a txt file)
 variable_txt = pandas.DataFrame.to_string(variable_frame)
+
+to_write = [total_costs, profit_goal, sales_needed, selling_price, recommended_price]
 
 # write to file
 # create file to hold data (add .txt extension)
