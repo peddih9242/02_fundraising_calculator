@@ -226,19 +226,23 @@ round_to = num_check("Round to nearest? $", "Please enter an integer above 0.", 
 selling_price = sales_needed / how_many
 recommended_price = round_up(selling_price, round_to)
 
+# printing
 print()
 print("**** Fund Raising - {} ****".format(product_name))
 print()
 cost_printing("Variable", variable_frame, variable_sub)
 
-fixed_frame = fixed_frame[['Total']]
-
 if have_fixed == "yes":
+    fixed_frame = fixed_frame[['Total']]
     cost_printing("Fixed", fixed_frame, fixed_sub)
 
 # change dataframe to string (so that it can be written into a txt file)
 variable_txt = pandas.DataFrame.to_string(variable_frame)
-fixed_txt = pandas.DataFrame.to_string(fixed_frame)
+
+if have_fixed == "yes":
+    fixed_txt = pandas.DataFrame.to_string(fixed_frame)
+else:
+    fixed_txt = ""
 
 # set up extra stats for printing and writing to file
 total_costs = "Total Costs: ${:.2f}".format(total_costs)
