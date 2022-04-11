@@ -221,7 +221,7 @@ profit_goal = get_goal(total_costs)
 
 sales_needed = total_costs + profit_goal
 
-round_to = num_check("Round to nearest? ", "Please enter an integer above 0.", int)
+round_to = num_check("Round to nearest? $", "Please enter an integer above 0.", int)
 
 selling_price = sales_needed / how_many
 recommended_price = round_up(selling_price, round_to)
@@ -234,23 +234,25 @@ cost_printing("Variable", variable_frame, variable_sub)
 if have_fixed == "yes":
     cost_printing("Fixed", fixed_frame[["Total"]], fixed_sub)
 
-print()
-print("Total Costs: ${:.2f}".format(total_costs))
-print()
 
-print("Profit Target: ${:.2f}".format(profit_goal))
-print("Total Sales: ${:.2f}".format(sales_needed))
-
-print()
-
-print("**** Pricing ****")
-print("Minimum Price: ${:.2f}".format(selling_price))
-print("Recommended Price: ${:.2f}".format(recommended_price))
 
 # change dataframe to string (so that it can be written into a txt file)
 variable_txt = pandas.DataFrame.to_string(variable_frame)
+fixed_txt = pandas.DataFrame.to_string(fixed_frame)
 
+# set up extra stats for printing and writing to file
+total_costs = "Total Costs: ${:.2f}".format(total_costs)
+profit_goal = "Profit Target: ${:.2f}".format(profit_goal)
+sales_needed = "Total Sales: ${:.2f}".format(sales_needed)
+selling_price = "Minimum Price: ${:.2f}".format(selling_price)
+recommended_price = "Recommended Price: ${:.2f}".format(recommended_price)
+
+# printing stats
+print("**** Pricing ****")
+print()
 to_write = [total_costs, profit_goal, sales_needed, selling_price, recommended_price]
+for item in to_write:
+    print(item)
 
 # write to file
 # create file to hold data (add .txt extension)
@@ -258,5 +260,16 @@ file_name = "{}.txt".format(product_name)
 text_file = open(file_name, "w+")
 
 # heading
-text_file.write("**** Fund Raising - {} ****".format(product_name))
+text_file.write("**** Fund Raising - {} ****\n\n".format(product_name))
+
+# writing stats to file
 text_file.write(variable_txt)
+text_file.write("\n\n")
+text_file.write(fixed_txt)
+text_file.write("\n\n")
+for item in to_write:
+    text_file.write(item)
+    text_file.write("\n")
+
+# close file
+text_file.close()
