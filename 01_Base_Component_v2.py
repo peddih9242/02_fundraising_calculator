@@ -79,7 +79,7 @@ def get_costs(var_fixed):
         if var_fixed == "variable":
             component_amount = num_check("Amount of component? ", "Please enter an integer above 0.", int)
         else:
-            component_amount = 1    
+            component_amount = 1
         count += 1
         var_amount.append(component_amount)
         print()
@@ -185,7 +185,7 @@ def get_goal(total_costs):
 def round_up(amount, var_round_to):
     try:
         amount = int(amount)
-        return float(math.ceil(amount / var_round_to)) * var_round_to + 1
+        return float(math.ceil(amount / var_round_to)) * var_round_to + var_round_to
     except ValueError:
         return float(math.ceil(amount / var_round_to)) * var_round_to
 

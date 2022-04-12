@@ -77,11 +77,10 @@ def get_goal(total_costs):
         else:
             return profit
 
-
 def round_up(amount, var_round_to):
     try:
         amount = int(amount)
-        return float(math.ceil(amount / var_round_to)) * var_round_to + 1
+        return float(math.ceil(amount / var_round_to)) * var_round_to + var_round_to
     except ValueError:
         return float(math.ceil(amount / var_round_to)) * var_round_to
 
