@@ -174,7 +174,7 @@ def get_goal(total_costs):
             else:
                 profit_type = "%"
 
-        # calculate target based on profit type
+        # calculate profit target based on profit type
         if profit_type == "%":
             target = total_costs * (profit / 100)
             return target
@@ -182,8 +182,12 @@ def get_goal(total_costs):
             return profit
 
 # rounding function
-def round_up(amount, round_to):
-    return int(math.ceil(amount / round_to)) * round_to
+def round_up(amount, var_round_to):
+    try:
+        amount = int(amount)
+        return float(math.ceil(amount / var_round_to)) * var_round_to + 1
+    except ValueError:
+        return float(math.ceil(amount / var_round_to)) * var_round_to
 
 # main routine
 
@@ -241,8 +245,6 @@ variable_txt = pandas.DataFrame.to_string(variable_frame)
 
 if have_fixed == "yes":
     fixed_txt = pandas.DataFrame.to_string(fixed_frame)
-else:
-    fixed_txt = ""
 
 # set up extra stats for printing and writing to file
 total_costs = "Total Costs: ${:.2f}".format(total_costs)
@@ -270,8 +272,9 @@ text_file.write("**** Fund Raising - {} ****\n\n".format(product_name))
 
 # writing stats to file
 text_file.write(variable_txt)
-text_file.write("\n\n")
-text_file.write(fixed_txt)
+if have_fixed == "yes":
+    text_file.write("\n\n")
+    text_file.write(fixed_txt)
 text_file.write("\n\n")
 for item in to_write:
     text_file.write(item)

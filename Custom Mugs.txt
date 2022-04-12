@@ -1,15 +1,19 @@
-**** Fund Raising - custom mugs ****
+**** Fund Raising - Custom Mugs ****
 
             Amount  Price    Total
 Name                              
-printing       300  $0.75  $225.00
-plain mugs     300  $1.00  $300.00
-packaging      300  $0.50  $150.00
+Printing       300  $0.75  $225.00
+Plain mugs     300  $1.00  $300.00
+Packaging      300  $0.50  $150.00
 
+             Total
+Name              
+Stall Hire  $25.00
+Artwork     $35.00
+Signage     $15.00
 
-
-Total Costs: $675.00
-Profit Target: $506.25
-Total Sales: $1181.25
-Minimum Price: $3.94
-Recommended Price: $4.00
+Total Costs: $750.00
+Profit Target: $750.00
+Total Sales: $1500.00
+Minimum Price: $5.00
+Recommended Price: $5.00
