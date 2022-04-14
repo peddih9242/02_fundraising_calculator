@@ -216,7 +216,7 @@ def instructions():
 yes_no = ["yes", "no"]
 
 # ask if user needs instructions
-instructions(yes_no)
+instructions()
 
 # get product name
 product_name = not_blank("Product name: ", "Please enter your product name!")
