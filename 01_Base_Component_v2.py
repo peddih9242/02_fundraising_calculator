@@ -207,6 +207,8 @@ def instructions():
         print()
         print("The data will also be written to a text file with the same name as your product name to let you save the stats for later.")
         print()
+        print("Note: While we're asking you for the name of your component you can type in 'xxx' to move onto the next step.")
+        print()
     else:
         print()
         return ""

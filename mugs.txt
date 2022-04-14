@@ -1,0 +1,12 @@
+**** Fund Raising - mugs ****
+
+          Amount    Price    Total
+Name                              
+mugs           1  $100.00  $100.00
+printing     100    $0.10   $10.00
+
+Total Costs: $110.00
+Profit Target: $110.00
+Total Sales: $220.00
+Minimum Price: $2.20
+Recommended Price: $4.00
