@@ -189,9 +189,33 @@ def round_up(amount, var_round_to):
     except ValueError:
         return float(math.ceil(amount / var_round_to)) * var_round_to
 
+# instructions function
+def instructions(options):
+    check_instructions = string_checker("Have you used this program before? ", "Please enter yes or no.", yes_no)
+
+    if check_instructions == "yes":
+        print()
+        print("**** Fundraising Calculator Instructions ****")
+        print()
+        print("In this program we will you for:")
+        print("- The name of the product you're selling")
+        print("- How many items you're selling")
+        print("- The costs for each component of the product")
+        print("- How much money you want to make")
+        print()
+        print("The program will then calculate and output a list of the costs with subtotals for the variable and fixed costs. Lastly it will tell you the minimum price you should sell each item for and a recommended price to reach your profit goal.")
+        print()
+        print("The data will also be written to a text file with the same name as your product name to let you save the stats for later.")
+    else:
+        print()
+        return ""
+
 # main routine
 
 yes_no = ["yes", "no"]
+
+# ask if user needs instructions
+instructions(yes_no)
 
 # get product name
 product_name = not_blank("Product name: ", "Please enter your product name!")
