@@ -190,10 +190,10 @@ def round_up(amount, var_round_to):
         return float(math.ceil(amount / var_round_to)) * var_round_to
 
 # instructions function
-def instructions(options):
+def instructions():
     check_instructions = string_checker("Have you used this program before? ", "Please enter yes or no.", yes_no)
 
-    if check_instructions == "yes":
+    if check_instructions == "no":
         print()
         print("**** Fundraising Calculator Instructions ****")
         print()
@@ -206,6 +206,7 @@ def instructions(options):
         print("The program will then calculate and output a list of the costs with subtotals for the variable and fixed costs. Lastly it will tell you the minimum price you should sell each item for and a recommended price to reach your profit goal.")
         print()
         print("The data will also be written to a text file with the same name as your product name to let you save the stats for later.")
+        print()
     else:
         print()
         return ""
